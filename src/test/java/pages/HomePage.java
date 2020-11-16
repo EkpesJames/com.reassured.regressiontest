@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 
 
 public class HomePage extends BaseClass {
-    WebDriverWait wait = new WebDriverWait(driver, 60);
 
+    WebDriverWait wait;
 
     @FindBy(id = "LifeInsurance_LifeInsurance_LifeHeroBlock_GetAQuoteCTA")
     @CacheLookup
@@ -26,6 +26,7 @@ public class HomePage extends BaseClass {
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, 30);
         PageFactory.initElements(driver, this);
     }
 
@@ -34,7 +35,7 @@ public class HomePage extends BaseClass {
         cookieBanner.click();
         wait.until(ExpectedConditions.visibilityOf(getQuoteButton));
         getQuoteButton.click();
-        Uninterruptibles.sleepUninterruptibly(60, TimeUnit.SECONDS);
+        Uninterruptibles.sleepUninterruptibly(10, TimeUnit.SECONDS);
     }
 
 }

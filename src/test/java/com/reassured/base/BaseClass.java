@@ -10,17 +10,21 @@ import org.testng.Assert;
 public class BaseClass {
 
     public static WebDriver driver = null;
-    static ConfigFileReader conf;
+    public static WebDriverWait wait;
+    public static ConfigFileReader conf;
 
     public static void setDriver(){
         conf = new ConfigFileReader();
+
         System.setProperty("webdriver.chrome.driver", conf.getDriverPath());
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.addArguments("disable-infobars");
+        options.addArguments("--start-maximized");
+        options.addArguments("--start-fullscreen");
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-notifications");
+
         driver = new ChromeDriver(options);
+        wait = new WebDriverWait(driver, 30);
     }
 
     public static void goToHomePage(){
