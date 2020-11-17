@@ -1,11 +1,17 @@
 package com.reassured.base;
 
-import com.reassured.drivers.fileReaders.ConfigFileReader;
+import com.google.common.util.concurrent.Uninterruptibles;
+import com.reassured.fileReaders.ConfigFileReader;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
 
@@ -13,7 +19,8 @@ public class BaseClass {
     public static WebDriverWait wait;
     public static ConfigFileReader conf;
 
-    public static void setDriver(){
+
+    public static void setDriver() {
         conf = new ConfigFileReader();
 
         System.setProperty("webdriver.chrome.driver", conf.getDriverPath());
@@ -27,17 +34,30 @@ public class BaseClass {
         wait = new WebDriverWait(driver, 30);
     }
 
-    public static void goToHomePage(){
+    public static void goToHomePage() {
         driver.get(conf.getApplicationUrl());
         Assert.assertTrue(driver.getTitle().equals("Compare Cheap Life Insurance Quotes | Compare the Market"));
     }
 
-    public static void closeDriver(){
+    public static void closeDriver() {
         if (driver == null) {
             return;
         }
         driver.quit();
         driver = null;
+    }
+
+    public static void scrollToTheBottomOfThePage() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, 850)");
+    }
+
+    public static void WaitUntilElementVisible(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void uninterruptibleSleep() {
+        Uninterruptibles.sleepUninterruptibly(10, TimeUnit.SECONDS);
     }
 
 }

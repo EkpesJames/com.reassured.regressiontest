@@ -1,6 +1,5 @@
 package pages;
 
-import com.google.common.util.concurrent.Uninterruptibles;
 import com.reassured.base.BaseClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 
 public class HomePage extends BaseClass {
@@ -30,12 +27,12 @@ public class HomePage extends BaseClass {
         PageFactory.initElements(driver, this);
     }
 
-    public void hooverLifeTab(){
+    public void goToQuotePage() {
         wait.until(ExpectedConditions.visibilityOf(cookieBanner));
         cookieBanner.click();
         wait.until(ExpectedConditions.visibilityOf(getQuoteButton));
         getQuoteButton.click();
-        Uninterruptibles.sleepUninterruptibly(10, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
 }

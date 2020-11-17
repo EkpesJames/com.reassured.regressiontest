@@ -2,11 +2,9 @@ package pages;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import com.reassured.base.BaseClass;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -98,7 +96,7 @@ public class QuoteModulePage extends BaseClass {
 
     public QuoteModulePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(BaseClass.driver, 60);
+        wait = new WebDriverWait(BaseClass.driver, 30);
         this.executor = (JavascriptExecutor) this.driver;
         PageFactory.initElements(BaseClass.driver, this);
     }
@@ -107,156 +105,156 @@ public class QuoteModulePage extends BaseClass {
         WebElement radioBTN = MySelfOptionButton;
         radioBTN.isSelected();
         radioBTN.click();
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
     public void clickMrTitle() {
         WebElement radioTitle = title;
         radioTitle.isSelected();
         radioTitle.click();
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
     public void enterFirstname(String firstname) {
         wait.until(ExpectedConditions.visibilityOf(firstnameField));
         firstnameField.clear();
         firstnameField.sendKeys(firstname);
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
     public void enterSurname(String surname) {
         wait.until(ExpectedConditions.visibilityOf(surnameField));
         surnameField.clear();
         surnameField.sendKeys(surname);
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
     public void selectDOBDay() {
         Select day = new Select(dateOfBirthDay);
         day.selectByValue("6");
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void selectDobMonth(){
+    public void selectDobMonth() {
         Select month = new Select(dateOfBirthMonth);
         month.selectByVisibleText("January");
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void selectDobYear(){
+    public void selectDobYear() {
         Select year = new Select(dateOfBirthYear);
         year.selectByValue("1980");
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
     public void noToSmoke() {
         WebElement smoked = noSmoke;
         smoked.isSelected();
         smoked.click();
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
     public void typeOfCover() {
         WebElement coverType = levelTerm;
         coverType.isSelected();
         coverType.click();
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
     public void termsYears(String years) {
         coverTerms.clear();
         coverTerms.sendKeys(years);
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void coverAmount(String sum){
+    public void coverAmount(String sum) {
         sumInsured.clear();
         sumInsured.sendKeys(sum);
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void setCriticalIllness(){
+    public void setCriticalIllness() {
         WebElement radioCriticalIllness = criticalIllness;
         radioCriticalIllness.isSelected();
         radioCriticalIllness.click();
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void setCriticalIllnessType(){
+    public void setCriticalIllnessType() {
         WebElement CriticalIllnessAddition = CriticalIllnessAdditional;
         CriticalIllnessAddition.isSelected();
         CriticalIllnessAddition.click();
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void setCriticalIllnessAmount(String amount){
+    public void setCriticalIllnessAmount(String amount) {
         criticalIllnessAmount.clear();
         criticalIllnessAmount.sendKeys(amount);
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void setEmailAddress(String email){
+    public void setEmailAddress(String email) {
         emailAddressField.clear();
         emailAddressField.sendKeys(email);
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void setPhoneNumber(String phone){
+    public void setPhoneNumber(String phone) {
         phoneNumberField.clear();
         phoneNumberField.sendKeys(phone);
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void setHouseNumberOrNameField(String houseNumber){
+    public void setHouseNumberOrNameField(String houseNumber) {
         houseNumberOrNameField.clear();
         houseNumberOrNameField.sendKeys(houseNumber);
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void setAddressPostcodeField(String postcode){
+    public void setAddressPostcodeField(String postcode) {
         addressPostcodeField.clear();
         addressPostcodeField.sendKeys(postcode);
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void clickAddressButton(){
+    public void clickAddressButton() {
         wait.until(ExpectedConditions.visibilityOf(findAddressButton));
         findAddressButton.click();
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void clickDoNotContactButton(){
+    public void clickDoNotContactButton() {
         WebElement doNotContact = doNotContactButton;
         doNotContact.isSelected();
         doNotContact.click();
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void clickAcceptTermsAndConditionsButton(){
+    public void clickAcceptTermsAndConditionsButton() {
         WebElement acceptTerms = acceptTermsAndConditionsButton;
         acceptTerms.isSelected();
         acceptTerms.click();
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        uninterruptibleSleep();
     }
 
-    public void clickGetYourQuotesButton(){
+    public void clickGetYourQuotesButton() {
         getQuoteButton.click();
-        Uninterruptibles.sleepUninterruptibly(1, TimeUnit.MINUTES);
+        uninterruptibleSleep();
     }
 
-    public void verifySummaryDetailsPageTitle(){
+    public void verifySummaryDetailsPageTitle() {
         Assert.assertTrue(driver.getTitle().equals("Compare the Market - Life Insurance"));
     }
 
-    public void removeCriticalIllness(){
+    public void removeCriticalIllness() {
         wait.until(ExpectedConditions.visibilityOf(removeButton));
         removeButton.click();
     }
 
-    public void updateResult(){
+    public void updateResult() {
         wait.until(ExpectedConditions.visibilityOf(updateResultsButton));
         updateResultsButton.click();
-        Uninterruptibles.sleepUninterruptibly(1, TimeUnit.MINUTES);
+        uninterruptibleSleep();
     }
 
 }

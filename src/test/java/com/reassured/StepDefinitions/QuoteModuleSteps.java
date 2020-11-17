@@ -1,5 +1,6 @@
 package com.reassured.StepDefinitions;
 
+import com.google.common.util.concurrent.Uninterruptibles;
 import com.reassured.base.BaseClass;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -7,6 +8,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.QuoteModulePage;
+
+import java.util.concurrent.TimeUnit;
 
 public class QuoteModuleSteps extends BaseClass {
 
@@ -18,21 +21,19 @@ public class QuoteModuleSteps extends BaseClass {
     public void user_is_on_the_home_page() {
         hooks = new Hooks();
         hooks.openBrowser();
-
-        hooks.takeScreenshot("opening-browser-for-first-time");
+        hooks.takeScreenshot("opening_browser");
     }
 
     @When("user clicks Get Quote button")
     public void user_clicks_get_quote_button() {
         homePage = new HomePage(driver);
-        homePage.hooverLifeTab();
-
-        hooks.takeScreenshot("hoover-life-tab");
+        homePage.goToQuotePage();
+        hooks.takeScreenshot("opening_the_quoting_engine");
     }
 
     @And("I select just myself option")
     public void i_select_just_myself_option() {
-        quotePage =  new QuoteModulePage(driver);
+        quotePage = new QuoteModulePage(driver);
         quotePage.clickMyselfOption();
         quotePage.clickMrTitle();
     }
@@ -122,30 +123,39 @@ public class QuoteModuleSteps extends BaseClass {
     @And("I tick confirm for the legal bit")
     public void i_tick_confirm_for_the_legal_bit() {
         quotePage.clickAcceptTermsAndConditionsButton();
-        hooks.takeScreenshot("Click_Get_your_confirm-button");
     }
 
     @And("I click Get your quotes button")
     public void i_click_Get_your_quotes_button() {
         quotePage.clickGetYourQuotesButton();
-        hooks.takeScreenshot("Click_Get_your_quotes_button");
     }
 
     @And("I capture quote summary")
     public void i_capture_quote_summary() {
         quotePage.verifySummaryDetailsPageTitle();
-        hooks.takeScreenshot("Capture_first_quote_summary");
+        //Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
+        uninterruptibleSleep();
+        scrollToTheBottomOfThePage();
+        //Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
+        uninterruptibleSleep();
+        hooks.takeScreenshot("Capturing_initial_quotes_summary");
     }
 
     @And("I remove critical illness")
     public void i_remove_critical_illness() {
         quotePage.removeCriticalIllness();
+        hooks.takeScreenshot("Capturing_after_removal_of_critical_illness");
     }
 
     @Then("the result is updated")
     public void the_result_is_updated() {
         quotePage.updateResult();
-        hooks.takeScreenshot("Capture_updated_quote_summary");
+        //Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
+        uninterruptibleSleep();
+        scrollToTheBottomOfThePage();
+        //Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
+        uninterruptibleSleep();
+        hooks.takeScreenshot("Capturing_updated_quotes_summary");
     }
 
 }

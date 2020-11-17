@@ -1,4 +1,4 @@
-package com.reassured.drivers.fileReaders;
+package com.reassured.fileReaders;
 
 import java.io.IOException;
 import java.io.InputStream;
