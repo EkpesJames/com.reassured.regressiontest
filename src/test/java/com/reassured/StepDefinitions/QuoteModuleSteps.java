@@ -133,11 +133,10 @@ public class QuoteModuleSteps extends BaseClass {
     @And("I capture quote summary")
     public void i_capture_quote_summary() {
         quotePage.verifySummaryDetailsPageTitle();
-        //Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         uninterruptibleSleep();
         scrollToTheBottomOfThePage();
-        //Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         uninterruptibleSleep();
+        zoomInScreen();
         hooks.takeScreenshot("Capturing_initial_quotes_summary");
     }
 
@@ -150,12 +149,12 @@ public class QuoteModuleSteps extends BaseClass {
     @Then("the result is updated")
     public void the_result_is_updated() {
         quotePage.updateResult();
-        //Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         uninterruptibleSleep();
         scrollToTheBottomOfThePage();
-        //Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         uninterruptibleSleep();
+        zoomInScreen();
         hooks.takeScreenshot("Capturing_updated_quotes_summary");
+        setScreenTo100();
     }
 
 }

@@ -2,9 +2,7 @@ package com.reassured.base;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import com.reassured.fileReaders.ConfigFileReader;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -57,7 +55,23 @@ public class BaseClass {
     }
 
     public static void uninterruptibleSleep() {
-        Uninterruptibles.sleepUninterruptibly(10, TimeUnit.SECONDS);
+        Uninterruptibles.sleepUninterruptibly(7, TimeUnit.SECONDS);
+    }
+
+    public static void zoomInScreen(){
+        for(int i=0; i<5; i++){
+            driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, Keys.ADD));
+        }
+    }
+
+    public void zoomOutScreen(){
+        for(int i=0; i<5; i++){
+            driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, Keys.SUBTRACT));
+        }
+    }
+
+    public void setScreenTo100(){
+        driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, "0"));
     }
 
 }

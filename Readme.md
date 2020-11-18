@@ -1,9 +1,13 @@
-## Prerequisite for test execution.
-
-1. Java version: 8 or later
-2. Maven version: 3.8.1
-3. Chromedriver & Chrome browser version: 86
-
+### Prerequisite for test execution.
+```
+- Java version: 8 or later
+```
+- Maven version: 3.8.1
+```
+- Chromedriver & Chrome browser version: 86
+```
+- IDE: Intellij or Eclipse
+```
 ### Run the project command
 - Clone git repo
 ```
@@ -14,12 +18,12 @@ git clone https://github.com/EkpesJames/com.reassured.regressiontest.git
 cd com.reassured.regressiontest
 ```
 
-- Run Maven
+- Run test using Maven
 ```
 mvn verify
 ```
 
-- Run TestNG
+- Run test using TestNG
 ```
 mvn verify -Dsurefire.suiteXmlFiles=quote-module.xml
 ```
